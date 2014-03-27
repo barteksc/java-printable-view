@@ -170,7 +170,7 @@ public class PrintPreview extends JScrollPane{
 	 */
 	public boolean changePage(int page){
 		
-		if(mPages.length<page || page < 1)
+		if(mPages.length<page || page < 1 || mCurrentPage == page)
 			return false;
 		
 		mCardLayout.show(mMainPanel, String.valueOf(page));
@@ -180,6 +180,9 @@ public class PrintPreview extends JScrollPane{
 		    mPrevButton.setEnabled(mCurrentPage == 1 ? false : true);
 		    mNextButton.setEnabled(mPages.length == page ? false:true);
 		}
+		if(mPagesCombo != null)
+		    mPagesCombo.setSelectedItem(String.valueOf(page));
+		    
 		validate();
 		return true;
 	}
